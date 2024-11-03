@@ -14,7 +14,7 @@ public class HttpConnectionExample {
 
     private static int roundrobin=0;
 
-    private static List<String> dominios = Arrays.asList("localhost:4587","localhost:4587");
+    private static List<String> dominios = Arrays.asList("54.175.189.94:4587","54.82.155.172:4587");
     private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
 
     public static String getResponse(String valor, String operacion, String lista) throws IOException{
@@ -43,9 +43,7 @@ public class HttpConnectionExample {
             }
             in.close();
             responsestring= response.toString();
-            System.out.println(responsestring);
             // print result
-            System.out.println(response.toString());
         } else {
             System.out.println("GET request not worked");
         }

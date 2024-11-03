@@ -19,15 +19,18 @@ public class controlador {
     @GetMapping("/linearsearch")
     @ResponseBody
 
-    public String linearSearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
-        return HttpConnectionExample.getResponse(value, "/lineal", list);
+    public lineal linearSearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
+        String ouput =  HttpConnectionExample.getResponse(value, "/lineal", list);
+        return new lineal("busqueda lineal",list,value,ouput);
+
     }
 
     @GetMapping("/binarysearch")
     @ResponseBody
 
-    public String binarySearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
-        return HttpConnectionExample.getResponse(value, "/binary", list);
+    public binary binarySearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
+        String ouput =  HttpConnectionExample.getResponse(value, "/binary", list);
+        return new binary("busqueda binaria",list,value,ouput);
     }
 
 }
