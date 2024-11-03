@@ -14,14 +14,15 @@ public class HttpConnectionExample {
 
     private static int roundrobin=0;
 
-    private static List<String> dominios = Arrays.asList("dominioaws1","Dominioaws");
+    private static List<String> dominios = Arrays.asList("localhost:4587","localhost:4587");
     private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
 
-    public static void main(String[] args) throws IOException {
+    public static String getResponse(String valor, String operacion, String lista) throws IOException{
 
         String dominio = dominios.get(roundrobin);
 
-        URL obj = new URL(GET_URL);
+        URL obj = new URL(("http://"+dominio+operacion+"?list="+lista+"&value="+valor)) ;
+        System.out.println("Te atendio la maquina ec2 "+dominio);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
@@ -29,6 +30,7 @@ public class HttpConnectionExample {
         //The following invocation perform the connection implicitly before getting the code
         int responseCode = con.getResponseCode();
         System.out.println("GET Response Code :: " + responseCode);
+        String responsestring =  "Error";
 
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
             BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -40,14 +42,16 @@ public class HttpConnectionExample {
                 response.append(inputLine);
             }
             in.close();
-
+            responsestring= response.toString();
+            System.out.println(responsestring);
             // print result
             System.out.println(response.toString());
         } else {
             System.out.println("GET request not worked");
         }
         System.out.println("GET DONE");
-        roundrobin= (roundrobin+1)%(dominio.length());
+        roundrobin= (roundrobin+1)%(dominios.size());
+        return responsestring;
     }
 
 

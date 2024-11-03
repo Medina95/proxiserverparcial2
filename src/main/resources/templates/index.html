@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Services Form</title>
+</head>
+<body>
+<h1>Math Services Form</h1>
+<label for="list">Lista:</label>
+<input type="text" id="list" name="list" placeholder="Lista separada por comas" >
+
+<label for="value">Valor:</label>
+<input type="text" id="value" name="value" placeholder="El valor que desea buscar">
+
+<label for="searchType">Selecciona el tipo:</label>
+<select id="searchType" name="searchType">
+    <option value="linear">Busqueda lineal</option>
+    <option value="binary">Busqueda binaria</option>
+</select>
+
+<input type="button" value="Submit" onclick="loadGetMsg()" >
+
+<pre id="getrespmsg"></pre>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
