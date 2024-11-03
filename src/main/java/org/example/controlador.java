@@ -20,14 +20,14 @@ public class controlador {
     @ResponseBody
 
     public String linearSearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
-        return HttpConnectionExample.getResponse(value, "/lineal", list); // Implementa esta función según sea necesario
+        return HttpConnectionExample.getResponse(value, "/lineal", list);
     }
 
     @GetMapping("/binarysearch")
     @ResponseBody
 
     public String binarySearchResponse(@RequestParam(value = "list") String list, @RequestParam(value = "value") String value) throws IOException {
-        return HttpConnectionExample.getResponse(value, "/binary",list); // Implementa esta función según sea necesario
+        return HttpConnectionExample.getResponse(value, "/binary", list);
     }
 
 }
